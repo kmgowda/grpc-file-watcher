@@ -6,7 +6,7 @@ The File watcher implementation for TLS Reload is also implemented
 ## how to build?
 
 1. export MY_INSTALL_DIR=<path where GRPC is installed>
-   1. in case , if you need details on how to build GRPC , refer here: 
+   1. in case , if you need details on how to build GRPC , refer here:[How to build GRPC](#How to build GRPC) 
 
 2. goto folder cpp
 
