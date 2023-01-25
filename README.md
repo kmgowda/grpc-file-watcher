@@ -1,20 +1,22 @@
 # grpc-secure-helloworld
 
 The GRPC greeter server and client implementation with TLS certificates.
+The File watcher implementation for TLS Reload is also implemented
 
 ## how to build?
 
-1. export MY_INSTALL_DIR=<path where GRPC is installed> 
+1. export MY_INSTALL_DIR=<path where GRPC is installed>
+   1. in case , if you need details on how to build GRPC , refer here: 
 
-1. goto folder cpp
+2. goto folder cpp
 
-1. mkdir -p cmake/build
+3. mkdir -p cmake/build
 
-1. pushd cmake/build
+4. pushd cmake/build
 
-1. cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
+5. cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
 
-1. make -j
+6. make -j
 
 you will find the executables secure_greeter_server and secure_greeter_client in the folder cmake/build
 
@@ -75,3 +77,23 @@ openssl rsa -passin pass:1234 -in client.key -out client.key
 ### Common SSL errors
 The common  SSL errors  from  secure and insecure client/server are  SSL routines:OPENSSL_internal:WRONG_VERSION_NUMBER) and from the bad use of certificates for grpc (SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED).
 The above certificates generated with above open commands resolves these command SSL errors. 
+
+
+### How to build GRPC
+refer to this page : https://grpc.io/docs/languages/cpp/quickstart/ for the detailed steps
+
+...
+1. export MY_INSTALL_DIR=$HOME/.local
+2. git clone --recurse-submodules -b v1.50.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+3. $ cd grpc
+   $ mkdir -p cmake/build
+   $ pushd cmake/build
+   $ cmake -DgRPC_INSTALL=ON \
+   -DgRPC_BUILD_TESTS=OFF \
+   -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+   ../..
+   $ make -j 4
+   $ make install
+   $ popd
+
+...

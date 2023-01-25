@@ -64,7 +64,7 @@ target_link_libraries(hw_grpc_proto
 
 # Targets greeter_[async_](client|server)
 foreach(_target
-        secure_greeter_client secure_greeter_server)
+        secure_greeter_client secure_greeter_server secure_greeter_tls_server)
   add_executable(${_target} "${_target}.cc")
   target_link_libraries(${_target}
     hw_grpc_proto
