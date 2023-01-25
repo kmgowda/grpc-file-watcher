@@ -25,15 +25,24 @@ you will find the executables secure_greeter_server and secure_greeter_client in
 
 1. got to folder cmake/build
 
-1. Run the executable : secure_greeter_server -ca <CA file path> -cert <Certificate path> -key <key file>
+2. Run the executable : secure_greeter_server -ca <CA file path> -cert <Certificate path> -key <key file>
 
-    ```
+```
         example:
         
     ./secure_greeter_server -ca /Users/kmg/projects/grpc/examples/cpp/helloworld/certificates/ca.pem -cert /Users/kmg/projects/grpc/examples/cpp/helloworld/certificates/cert.pem -key /Users/kmg/projects/grpc/examples/cpp/helloworld/certificates/key.pem
-    ```
+```
 
-2. in the other shell window : secure_greeter_client -ca <CA file path> -cert <Certificate path> -key <key file>
+   or you can execute with file water TLS reload executable as follows
+
+```
+example:
+
+    ./secure_greeter_tls_server -ca ./certs/ca_cert.pem -cert ./certs/server_cert.pem  -key ./certs/server_key.pem
+```
+
+
+3. in the other shell window : secure_greeter_client -ca <CA file path> -cert <Certificate path> -key <key file>
     1. for client, you set the server ip , using -target option too.
     
     ```
@@ -74,6 +83,9 @@ openssl rsa -passin pass:1234 -in client.key -out client.key
 
 ```
  
+you can execute the scripts [gen-ca-files.sh](gen-ca-files.sh) to generate the CA files and [gen-tls-server-files](gen-tls-server-files.sh) to generate the server key and certifidates.
+The scripts [gen-tls-client-files.sh](gen-tls-client-files.sh) can be used to generate the certificates for client side.
+
 ### Common SSL errors
 The common  SSL errors  from  secure and insecure client/server are  SSL routines:OPENSSL_internal:WRONG_VERSION_NUMBER) and from the bad use of certificates for grpc (SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED).
 The above certificates generated with above open commands resolves these command SSL errors. 
@@ -96,4 +108,5 @@ refer to this page : https://grpc.io/docs/languages/cpp/quickstart/ for the deta
    $ make install
    $ popd
 
+The step2 generate the executables of grpc in $MY_INSTALL_DIR
 ...
