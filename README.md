@@ -98,14 +98,20 @@ refer to this page : https://grpc.io/docs/languages/cpp/quickstart/ for the deta
 1. export MY_INSTALL_DIR=$HOME/.local
 2. git clone --recurse-submodules -b v1.50.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
 3. $ cd grpc
+   
    $ mkdir -p cmake/build
+   
    $ pushd cmake/build
+   
    $ cmake -DgRPC_INSTALL=ON \
    -DgRPC_BUILD_TESTS=OFF \
    -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
    ../..
+   
    $ make -j 4
+   
    $ make install
+   
    $ popd
 
 The step2 generate the executables of grpc in $MY_INSTALL_DIR
